@@ -1,0 +1,9 @@
+---
+- name: Deploy to AKS Cluster
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Display deployment status
+      debug:
+        msg: "Ansible is ready to deploy Kubernetes resources!"
