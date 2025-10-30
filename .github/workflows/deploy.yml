@@ -1,39 +1,41 @@
-name: CI/CD Pipeline - DevOps Automation
+name: build-and-deploy
 
 on:
   push:
     branches:
       - main
 
+env:
+  ACR_NAME: duraiacr98765               # your Azure Container Registry name
+  AKS_RESOURCE_GROUP: devops-resource-group
+  AKS_CLUSTER_NAME: devops-aks-cluster
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Log in to Azure
-        uses: azure/login@v2
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Log in to Azure Container Registry
-        run: |
-          az acr login --name duraiacr98765
+        run: az acr login --name ${{ env.ACR_NAME }}
 
       - name: Build Docker Image
         run: docker build -t ${{ env.ACR_NAME }}.azurecr.io/devops-app:latest ./app
+
       - name: Push Docker Image to ACR
-        run: |
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/devops-app:latest
+        run: docker push ${{ env.ACR_NAME }}.azurecr.io/devops-app:latest
 
       - name: Set AKS Context
-        run: |
-          az aks get-credentials --resource-group devops-resource-group --name devops-aks-cluster --overwrite-existing
+        run: az aks get-credentials --resource-group ${{ env.AKS_RESOURCE_GROUP }} --name ${{ env.AKS_CLUSTER_NAME }} --overwrite-existing --admin
 
       - name: Deploy to AKS
         run: |
-          kubectl set image deployment/portfolio-app portfolio=${{ secrets.REGISTRY_LOGIN_SERVER }}/devops-app:latest --insecure-skip-tls-verify=true
+          kubectl set image deployment/portfolio-app portfolio=${{ env.ACR_NAME }}.azurecr.io/devops-app:latest --insecure-skip-tls-verify=true
           kubectl get pods -o wide --insecure-skip-tls-verify=true
