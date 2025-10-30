@@ -1,0 +1,19 @@
+---
+- name: Deploy App to AKS
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Login to Azure Container Registry (without Docker)
+      ansible.builtin.command: >
+        az acr login -n duraiacr98765 --expose-token
+
+    - name: Get AKS credentials
+      ansible.builtin.command: >
+        az aks get-credentials --resource-group devops-resource-group --name devops-aks-cluster --overwrite-existing
+
+
+    - name: Apply Kubernetes Deployment
+      ansible.builtin.command: >
+        kubectl apply -f ../kubernetes/deployment.yaml --validate=false --insecure-skip-tls-verify=true
+

@@ -1,9 +1,92 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>DevOps Automation App</title>
-  </head>
-  <body>
-    <h1>Hello from DevOps Automated Deployment</h1>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Krishnapriya — Aspiring DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#9aa4b2; --white:#f8fafc;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial; margin:0; color:var(--white); background:linear-gradient(180deg,#071226 0%, #0f1724 100%);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:980px;margin:36px auto;padding:28px}
+    .hero{display:flex;gap:28px;align-items:center}
+    .avatar{width:120px;height:120px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#031024;font-size:30px}
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted); margin:8px 0 18px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:20px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .btn{display:inline-block;background:var(--accent);color:#042028;padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none}
+    ul.skills{list-style:none;padding:0;margin:8px 0;display:flex;flex-wrap:wrap;gap:8px}
+    ul.skills li{background:#021420;padding:6px 10px;border-radius:8px;color:var(--muted);font-size:13px}
+    .projects .project{margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+    @media(max-width:880px){.grid{grid-template-columns:1fr;}.avatar{width:92px;height:92px;font-size:20px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="avatar">KRISH</div>
+      <div>
+        <h1>Krishnapriya S</h1>
+        <p class="lead">Aspiring DevOps & Cloud Engineer — building reliable deployments, automation and cloud infrastructure.</p>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="card">
+          <h3>About</h3>
+          <p style="color:var(--muted);margin-top:6px">
+            I like automating build, test and deployment pipelines using Ansible, Docker, Kubernetes and cloud providers. Currently learning more about CI/CD and cloud native patterns.
+          </p>
+          <h4 style="margin-top:14px">Key Skills</h4>
+          <ul class="skills">
+            <li>Ansible</li><li>Docker</li><li>Kubernetes</li><li>Azure / AKS</li><li>CI/CD</li><li>Git</li>
+          </ul>
+        </div>
+
+        <div class="card projects" style="margin-top:16px">
+          <h3>Projects</h3>
+          <div class="project">
+            <strong>DevOps Automation System</strong>
+            <div style="color:var(--muted);font-size:14px;margin-top:6px">Ansible playbooks that build Docker image, push to ACR and deploy to AKS. Includes Kubernetes manifests and CI-ready structure.</div>
+          </div>
+          <div class="project">
+            <strong>Portfolio site (this)</strong>
+            <div style="color:var(--muted);font-size:14px;margin-top:6px">Static single-page site containerized with Docker and deployed to Kubernetes.</div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Contact</h3>
+          <p style="color:var(--muted)">Email: <strong>krishnapriyas@karunya.edu.in</strong></p>
+          <p style="color:var(--muted)">LinkedIn: <strong>www.linkedin.com/in/s-krishna-priya</strong></p>
+          <a id="contact" class="btn" href="mailto:krishnapriyas@karunya.edu.in">Email me</a>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4>How to demo</h4>
+          <ol style="color:var(--muted);font-size:14px;padding-left:16px">
+            <li>Open the LoadBalancer IP (the public IP shown from <code>kubectl get svc</code>).</li>
+            <li>The website will show a hero + projects section (this page).</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Krishnapriya — Aspiring DevOps Engineer
+    </footer>
+  </div>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
 </html>
