@@ -1,0 +1,40 @@
+name: CI/CD Pipeline - DevOps Automation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Log in to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Log in to Azure Container Registry
+        run: |
+          az acr login --name duraiacr98765
+
+      - name: Build Docker Image
+        run: |
+          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/devops-app:latest ./app
+
+      - name: Push Docker Image to ACR
+        run: |
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/devops-app:latest
+
+      - name: Set AKS Context
+        run: |
+          az aks get-credentials --resource-group devops-resource-group --name devops-aks-cluster --overwrite-existing
+
+      - name: Deploy to AKS
+        run: |
+          kubectl set image deployment/portfolio-app portfolio=${{ secrets.REGISTRY_LOGIN_SERVER }}/devops-app:latest --insecure-skip-tls-verify=true
+          kubectl get pods -o wide --insecure-skip-tls-verify=true
