@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Krishnapriya — Aspiring DevOps Engineer</title>
+  <title>Rixcy — Cloud & DevOps Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#9aa4b2; --white:#f8fafc;
+      --bg:#0a0f1c; --card:#101828; --accent:#00bcd4; --muted:#9aa4b2; --white:#f8fafc;
     }
     *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Arial; margin:0; color:var(--white); background:linear-gradient(180deg,#071226 0%, #0f1724 100%);-webkit-font-smoothing:antialiased}
+    body{font-family:Inter,system-ui,Arial; margin:0; color:var(--white); background:linear-gradient(180deg,#08111f 0%, #0a1524 100%);-webkit-font-smoothing:antialiased}
     .wrap{max-width:980px;margin:36px auto;padding:28px}
     .hero{display:flex;gap:28px;align-items:center}
     .avatar{width:120px;height:120px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#031024;font-size:30px}
@@ -30,11 +30,11 @@
 <body>
   <div class="wrap">
     <div class="hero">
-      <div class="avatar">KRISH</div>
+      <div class="avatar">RIXCY</div>
       <div>
-        <h1>Krishnapriya S</h1>
-        <p class="lead">Aspiring DevOps & Cloud Engineer — building reliable deployments, automation and cloud infrastructure.</p>
-        <a class="btn" href="#contact">Get in touch</a>
+        <h1>Rixcy S</h1>
+        <p class="lead">Cloud & DevOps Enthusiast — passionate about automating deployments, container orchestration, and continuous delivery in the cloud.</p>
+        <a class="btn" href="#contact">Connect</a>
       </div>
     </div>
 
@@ -43,11 +43,11 @@
         <div class="card">
           <h3>About</h3>
           <p style="color:var(--muted);margin-top:6px">
-            I like automating build, test and deployment pipelines using Ansible, Docker, Kubernetes and cloud providers. Currently learning more about CI/CD and cloud native patterns.
+            I’m interested in building cloud-native solutions through automation using Docker, Kubernetes, Ansible, and Azure. My focus is on CI/CD integration for faster, more reliable software delivery.
           </p>
           <h4 style="margin-top:14px">Key Skills</h4>
           <ul class="skills">
-            <li>Ansible</li><li>Docker</li><li>Kubernetes</li><li>Azure / AKS</li><li>CI/CD</li><li>Git</li>
+            <li>Docker</li><li>Kubernetes</li><li>Azure / AKS</li><li>CI/CD</li><li>Ansible</li><li>GitHub Actions</li>
           </ul>
         </div>
 
@@ -55,11 +55,15 @@
           <h3>Projects</h3>
           <div class="project">
             <strong>DevOps Automation System</strong>
-            <div style="color:var(--muted);font-size:14px;margin-top:6px">Ansible playbooks that build Docker image, push to ACR and deploy to AKS. Includes Kubernetes manifests and CI-ready structure.</div>
+            <div style="color:var(--muted);font-size:14px;margin-top:6px">
+              A comprehensive system for automating cloud infrastructure, CI/CD pipelines, and Kubernetes deployments — built around repository <em>devops_automation_system</em>.
+            </div>
           </div>
           <div class="project">
-            <strong>Portfolio site (this)</strong>
-            <div style="color:var(--muted);font-size:14px;margin-top:6px">Static single-page site containerized with Docker and deployed to Kubernetes.</div>
+            <strong>Portfolio Website</strong>
+            <div style="color:var(--muted);font-size:14px;margin-top:6px">
+              Personal portfolio built with HTML/CSS, containerised, and deployed via Kubernetes and Azure cloud.
+            </div>
           </div>
         </div>
       </div>
@@ -67,23 +71,23 @@
       <aside>
         <div class="card">
           <h3>Contact</h3>
-          <p style="color:var(--muted)">Email: <strong>krishnapriyas@karunya.edu.in</strong></p>
-          <p style="color:var(--muted)">LinkedIn: <strong>www.linkedin.com/in/s-krishna-priya</strong></p>
-          <a id="contact" class="btn" href="mailto:krishnapriyas@karunya.edu.in">Email me</a>
+          <p style="color:var(--muted)">Email: <strong>rixcy@karunya.edu.in</strong></p>
+        <p style="color:var(--muted)">LinkedIn: <strong>www.linkedin.com/in/s-rixcy</strong></p>
+        <a id="contact" class="btn" href="mailto:rixcy@karunya.edu.in">Email me</a>
         </div>
 
         <div class="card" style="margin-top:12px">
           <h4>How to demo</h4>
           <ol style="color:var(--muted);font-size:14px;padding-left:16px">
-            <li>Open the LoadBalancer IP (the public IP shown from <code>kubectl get svc</code>).</li>
-            <li>The website will show a hero + projects section (this page).</li>
+            <li>Get the LoadBalancer IP via <code>kubectl get svc</code>.</li>
+            <li>Access the public IP to view the deployed site.</li>
           </ol>
         </div>
       </aside>
     </div>
 
     <footer>
-      © <span id="year"></span> Krishnapriya — Aspiring DevOps Engineer
+      © <span id="year"></span> Rixcy — Cloud & DevOps Engineer
     </footer>
   </div>
 
